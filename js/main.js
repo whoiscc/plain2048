@@ -7,10 +7,39 @@ function Tile(num, row, col) {
   this.col = col;
 }
 
+function createGame() {
+  const grid = Array.from({length: 4}, function () {
+    const row = new Array(4);
+    row.fill(null);
+    return row;
+  });
+  return {
+    genTile() {
+      let row, col;
+      do {
+        row = Math.floor(Math.random() * 4);
+        col = Math.floor(Math.random() * 4);
+      } while (grid[row][col] !== null);
+      const tile = new Tile(Math.random() * 10 < 1 ? 4 : 2, row, col);
+      grid[row][col] = tile;
+      return tile;
+    }
+  }
+}
+
 Tile.prototype.count = 0;
 
 function freeze() {
   return freeze;
+}
+
+function createAppearUpdater(duration) {
+  const start = Date.now();
+  return function updater(attrib) {
+    const delta = Math.min(Date.now() - start, duration);
+    attrib.size = delta / duration * 100;
+    return delta < duration ? updater : freeze;
+  }
 }
 
 function createStageUpdater() {
@@ -35,9 +64,6 @@ function createStageUpdater() {
       tileEl.innerText = tile.num;
       document.querySelector('#p2-stage').appendChild(tileEl);
 
-      let count = 0;
-      const sizeStep = 100 / 60;
-
       tileMap[tile.id] = {
         element: tileEl,
         attributes: {
@@ -45,18 +71,18 @@ function createStageUpdater() {
           top: tile.row * 110 + 10,
           left: tile.col * 110 + 10,
         },
-        updater: function updater(attrib) {
-          attrib.size += sizeStep;
-          return ++count < 60 ? updater : freeze;
-        }
+        updater: createAppearUpdater(100)
       };
     }
   }
 }
 
 function start() {
+  const game = createGame();
   const updater = createStageUpdater();
-  updater.addTile(new Tile(32, 1, 2));
+  window.addEventListener('click', function () {
+    updater.addTile(game.genTile());
+  });
   let frameCounter = 0;
   requestAnimationFrame(function renderLoop() {
     updater.applyRendering();
