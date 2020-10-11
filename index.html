@@ -24,22 +24,30 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-  <div id="p2-page">
-    <h1>Plain 2048<small>  @ <span id="p2-fps">0</span>fps</small></h1>
-    <div id="p2-stage"></div>
+<!-- Add your site or application content here -->
+<div id="p2-page">
+  <h1>Plain 2048<small> @ <span id="p2-fps">0</span>fps</small></h1>
+  <button id="p2-reset">Reset</button>
+  <div id="p2-stage">
+    <div id="p2-game-over" hidden>Game Over</div>
   </div>
+</div>
 
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<!--<script>-->
+<!--  window.ga = function() { ga.q.push(arguments); };-->
+<!--  ga.q = [];-->
+<!--  ga.l = +new Date;-->
+<!--  ga('create', 'UA-XXXXX-Y', 'auto');-->
+<!--  ga('set', 'anonymizeIp', true);-->
+<!--  ga('set', 'transport', 'beacon');-->
+<!--  ga('send', 'pageview');-->
+<!--</script>-->
+<!--<script src="https://www.google-analytics.com/analytics.js" async></script>-->
 </body>
 
 </html>

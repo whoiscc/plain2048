@@ -98,6 +98,17 @@ textarea {
   position: fixed;
 }
 
+#p2-game-over {
+  z-index: 1;
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  line-height: 450px;
+  text-align: center;
+  font-size: 60px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
 .p2-tile {
   text-align: center;
   border: 1px solid;
@@ -197,9 +208,9 @@ textarea {
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
